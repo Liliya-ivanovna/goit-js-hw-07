@@ -1,7 +1,7 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
 const ulEl = document.querySelector(".gallery");
-function createGalleryElements(items){
+function createGalleryElement(items){
     let galleryElements =items.map(item => {
     let liEl =document.createElement('li');
     liEl.classList.add('gallery__item');
@@ -10,7 +10,7 @@ function createGalleryElements(items){
     imgEl.classList.add('gallery__image');
     imgEl.src = item.preview;
     imgEl.alt = item.description;
-    imgEl.dataset.source = "large-image.jpg";
+    imgEl.dataset.source = item.original;
 
     let linkEl = document.createElement('a');
     linkEl.classList.add('gallery__link');
@@ -22,31 +22,18 @@ function createGalleryElements(items){
 ulEl.append(...galleryElements);
 return ulEl;
 };
-function openModal (href){ console.log (href);
-    //let MODAL_TEMPLATE = ''
-   
-};
-//function createGalleryElements(items){
-//return ulEl;
-//}
 function onGalleryItemClick(event){
-    let clickeditemEl = event.target.closest('.gallery__item');
-    if(!clickeditemEl){
+    if(!event.target.classList.contains('gallery__image')){
         return;
-    };
-    //clickeditemEl.classlist.add('is-active');
-    //let currentActiveCard = document.querySelector('.gallery__item.is-active');
-    //if(currentActiveCard){
-     //   currentActiveCard.classList.remove('is-active');  
-    //};
-    let {href} = clickeditemEl.dataset;
-    openModal(href);console.log(clickeditemEl)
+    } console.log('click')
+        event.preventDefault();
 };
-function bindEvents(ulEl){
+function bindEvents(){
     ulEl.addEventListener('click',onGalleryItemClick);
+    console.log('click')
 };
 function initGallery(items){
-  let ulEl = createGalleryElements(items);
+  let ulEl = createGalleryElement(items);
   bindEvents(ulEl); 
 }
 initGallery(galleryItems);
