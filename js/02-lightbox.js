@@ -16,11 +16,10 @@ function createGalleryMarkUp(items){
 const addGalleryMarkUp = createGalleryMarkUp(galleryItems);
 ulEl.innerHTML = addGalleryMarkUp;
 
-
-    var lightbox = new SimpleLightbox('.gallery a', { 
+ let lightbox = new SimpleLightbox('.gallery a', { 
         captionDelay:250,
         captionsData: "alt",
         enableKeyboard: true,
         close: true,
     });
-    
+  console.log(lightbox)
