@@ -28,8 +28,9 @@ function onGalleryItemClick(event){
 
 ulEl.addEventListener("keydown",(event) =>{
    if(event.code === "Escape"){
+    document.removeEventListener("keydown",event);
     instance.close();
-   } 
+   }  
  });
  }
 
